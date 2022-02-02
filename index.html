@@ -13,19 +13,23 @@
     <div id="nav">
         <img src="./assets/img/avatar_smoke.jpg" alt="" class="nav-photo">
         <ul class="nav-list">
-            <li><a class="nav-btn account btn-unclick" href="#">
+            <li class="nav-element active">
+                <a class="nav-btn" href="#">
                 <i class="fas fa-home" style="user-select: auto;"></i> <br>
                 home</a>
             </li>
-            <li><a class="nav-btn account btn-unclick" href="#about">
+            <li class="nav-element">
+                <a class="nav-btn" href="#about">
                 <i class="fas fa-user"></i> <br>
                 about</a>
             </li>
-            <li><a class="nav-btn account btn-unclick" href="#photo">
+            <li class="nav-element">
+                <a class="nav-btn" href="#photo">
                 <i class="fas fa-eye"></i> <br>
                 photo</a>
             </li>
-            <li><a class="nav-btn account btn-unclick" href="#contact">
+            <li class="nav-element">
+                <a class="nav-btn" href="#contact">
                 <i class="fas fa-envelope"></i> <br>
                 contact</a>
             </li>
@@ -213,14 +217,20 @@
     </div>
     <script>
         // change color nav background-color:
-        jQuery(document).ready(() => {
-            jQuery(".nav-btn .account").click(() => {
-                jQuery(".nav-btn .btn-click").removeClass("btn-click")
-                
-                jQuery(this).addClass("btn-click")
-                jQuery(this).removeClass("account")
-            })
-        }) 
+        var $ = document.querySelector.bind(document)
+        var $$ = document.querySelectorAll.bind(document)
+
+        const navBtns = $$('.nav-element')
+        const navActive = $('.nav-element.active')
+
+        navBtns.forEach((navBtn, index) => {
+            navBtn.onclick = function() {
+                $('.nav-element.active').classList.remove('active')
+                console.log(this)
+                navBtn.classList.add('active')
+            }
+
+        })
     </script>
 </body>
 </html>
